@@ -1,0 +1,35 @@
+{
+  "name": "headful",
+  "version": "0.0.0",
+  "description": "Set <head> properties (e.g. title and meta tags) from JavaScript.",
+  "keywords": [
+    "head",
+    "title",
+    "meta",
+    "metatag",
+    "metatags",
+    "seo",
+    "sharing"
+  ],
+  "homepage": "https://github.com/troxler/headful",
+  "bugs": "https://github.com/troxler/headful/issues",
+  "license": "MIT",
+  "author": "troxler",
+  "files": [
+    "dist",
+    "readme.md"
+  ],
+  "main": "dist/headful.js",
+  "repository": "github:troxler/headful",
+  "scripts": {
+    "dev": "(cd demo; poi)",
+    "build": "babel src/ --presets babel-preset-env --out-dir dist/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "poi": "9.6.10"
+  }
+}
