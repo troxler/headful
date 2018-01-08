@@ -37,15 +37,14 @@ function headful(props, userConf) {
 headful.props = propertySetters;
 
 function setMetaContent(attr, val) {
-    setAttr('meta', attr, 'content', val);
+    setAttributes(`meta[${attr}]`, {content: val});
 }
 
-function setAttr(el, attr, key, val) {
-    const selector = `${el}[${attr}]`;
+function setAttributes(selector, attributes) {
     const element = document.querySelector(selector);
     if (element) {
-        element.setAttribute(key, val);
+        Object.keys(attributes).forEach(attrName => element.setAttribute(attrName, attributes[attrName]));
     } else if (conf.debug) {
-        console.error(`Headful: Element <${el} ${attr}> was not found.`);
+        console.error(`Headful: Element '${selector}' was not found.`);
     }
 }
