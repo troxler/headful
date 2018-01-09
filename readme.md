@@ -69,6 +69,10 @@ headful({
     // * <meta property="og:description">
     // * <meta name="twitter:description">
 
+    keywords: '',
+    // string or array
+    // * <meta name="keywords">
+
     image: '',
     // * <meta itemprop="image">
     // * <meta property="og:image">

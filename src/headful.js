@@ -17,6 +17,9 @@ const propertySetters = {
         setMetaContent('property="og:description"', val);
         setMetaContent('name="twitter:description"', val);
     },
+    keywords(val) {
+        setMetaContent('name="keywords"', Array.isArray(val) ? val.join(', ') : val);
+    },
     image(val) {
         setMetaContent('itemprop="image"', val);
         setMetaContent('property="og:image"', val);
