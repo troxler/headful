@@ -61,17 +61,17 @@ import headful from 'headful';
 
 headful({
     title: '',
-    // <title>
+    // * <title>
 
     description: '',
-    // <meta name="description">
-    // <meta itemprop="description">
-    // <meta property="og:description">
-    // <meta name="twitter:description">
+    // * <meta name="description">
+    // * <meta itemprop="description">
+    // * <meta property="og:description">
+    // * <meta name="twitter:description">
 
     image: '',
-    // <meta itemprop="image">
-    // <meta property="og:image">
-    // <meta name="twitter:image">
+    // * <meta itemprop="image">
+    // * <meta property="og:image">
+    // * <meta name="twitter:image">
 });
 ```
