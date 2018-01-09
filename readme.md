@@ -107,3 +107,8 @@ headful({
     ogLocale: 'en_GB',
 });
 ```
+
+
+## Extensions
+
+* [vue-headful](https://github.com/troxler/vue-headful) - Headful wrapper for Vue.js
