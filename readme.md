@@ -7,6 +7,7 @@ Most properties supported by Headful are only useful when they are set *before* 
 For example, you won't be able to change properties used for URL sharing on social networks (e.g. Facebook, Twitter) or messengers (WhatsApp, Telegram).
 That means you should either prerender your pages before the deployment or use server-side rendering.
 
+*PS: Are you using Vue.js? Then you should checkout [vue-headful](https://github.com/troxler/vue-headful) instead.*
 
 
 ## Install
