@@ -8,11 +8,13 @@ For example, you won't be able to change properties used for URL sharing on soci
 That means you should either prerender your pages before the deployment or use server-side rendering.
 
 
+
 ## Install
 
 ```
 npm i headful
 ```
+
 
 ## Usage
 
@@ -46,8 +48,8 @@ So it is important that you add everything that you want to have populated in yo
 <!-- ... -->
 </body>
 </html>
-
 ```
+
 
 ## Documentation
 
@@ -87,22 +89,22 @@ headful({
 });
 ```
 
-Note that are some head properties that can be specified with different Headful property names (e.g. `<meta property="og:locale">`). 
+Note that are some head properties that can be specified with different Headful property names (e.g. `<meta property="og:locale">`).
 There is always one Headful property that tries to set as many head properties as possible (e.g. `lang`).
 But if you also specify another conflicting Headful property (e.g. `ogLocale`), then the more specific one will win.
 See the example below.
 
 ```js
 headful({
-    // Sets <html lang="en-GB"> and <meta property="og:locale" content="en_GB"> 
+    // Sets <html lang="en-GB"> and <meta property="og:locale" content="en_GB">
     lang: 'en-GB',
 });
 
 
 headful({
-    // Sets <html lang="en-AU"> and does not change <meta property="og:locale"> as we also specify 'ogLocale' 
+    // Sets <html lang="en-AU"> and does not change <meta property="og:locale"> as we also specify 'ogLocale'
     lang: 'en-AU',
-    
+
     // Sets <meta property="og:locale" content="en_GB"> only
     ogLocale: 'en_GB',
 });
