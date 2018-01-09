@@ -30,11 +30,19 @@ function headful(props, userConf) {
         if (!propertySetters.hasOwnProperty(prop)) {
             throw new Error(`Headful: Property '${prop}' is unknown.`);
         }
-        propertySetters[prop](props[prop]);
+        propertySetters[prop](props[prop], props);
     });
 }
 
 headful.props = propertySetters;
+
+/**
+ * Tests whether the given `props` object contains a property with the name of `propNameOrFunction`.
+ */
+function noProp(props, propNameOrFunction) {
+    const propName = typeof propNameOrFunction === 'function' ? propNameOrFunction.name : propNameOrFunction;
+    return !props.hasOwnProperty(propName);
+}
 
 function setMetaContent(attr, val) {
     setAttributes(`meta[${attr}]`, {content: val});
