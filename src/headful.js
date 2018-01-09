@@ -22,6 +22,13 @@ const propertySetters = {
         setMetaContent('property="og:image"', val);
         setMetaContent('name="twitter:image"', val);
     },
+    lang(val, props) {
+        setAttributes('html', {lang: val});
+        noProp(props, this.ogLocale) && setOgLocaleIfValid(val);
+    },
+    ogLocale(val) {
+        setMetaContent('property="og:locale"', val);
+    },
 };
 
 function headful(props, userConf) {
@@ -54,5 +61,13 @@ function setAttributes(selector, attributes) {
         Object.keys(attributes).forEach(attrName => element.setAttribute(attrName, attributes[attrName]));
     } else if (conf.debug) {
         console.error(`Headful: Element '${selector}' was not found.`);
+    }
+}
+
+function setOgLocaleIfValid(locale) {
+    if (locale.match(/^[a-z]{2}-[a-z]{2}$/i)) {
+        const [language, region] = locale.split('-');
+        const ogLocale = `${language}_${region.toUpperCase()}`;
+        propertySetters.ogLocale(ogLocale);
     }
 }

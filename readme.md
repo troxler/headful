@@ -52,7 +52,7 @@ So it is important that you add everything that you want to have populated in yo
 ## Documentation
 
 Headful supports several different head properties.
-Below you can find a list of properties and for each of them which elements they populate.
+Below you can find a list of Headful properties and for each of them which elements they populate.
 
 For more information on everything you can put into `<head>`, have a look at <https://gethead.info/>.
 
@@ -73,5 +73,33 @@ headful({
     // * <meta itemprop="image">
     // * <meta property="og:image">
     // * <meta name="twitter:image">
+
+    lang: '',
+    // * <html lang>
+    // * <meta property="og:locale"> - only for language codes like ll-CC
+
+    ogLocale: '',
+    // * <meta property="og:locale">
+});
+```
+
+Note that are some head properties that can be specified with different Headful property names (e.g. `<meta property="og:locale">`). 
+There is always one Headful property that tries to set as many head properties as possible (e.g. `lang`).
+But if you also specify another conflicting Headful property (e.g. `ogLocale`), then the more specific one will win.
+See the example below.
+
+```js
+headful({
+    // Sets <html lang="en-GB"> and <meta property="og:locale" content="en_GB"> 
+    lang: 'en-GB',
+});
+
+
+headful({
+    // Sets <html lang="en-AU"> and does not change <meta property="og:locale"> as we also specify 'ogLocale' 
+    lang: 'en-AU',
+    
+    // Sets <meta property="og:locale" content="en_GB"> only
+    ogLocale: 'en_GB',
 });
 ```

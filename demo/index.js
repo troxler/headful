@@ -5,5 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
         title: 'Headful title',
         description: 'Headful description',
         image: 'http://example.com/preview.png',
+        lang: 'en-US',
     }, {debug: true});
 });
