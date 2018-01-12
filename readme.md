@@ -65,6 +65,9 @@ import headful from 'headful';
 headful({
     title: '',
     // * <title>
+    // * <meta itemprop="name">
+    // * <meta property="og:title">
+    // * <meta name="twitter:title">
 
     description: '',
     // * <meta name="description">
