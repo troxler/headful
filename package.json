@@ -23,13 +23,26 @@
   "repository": "github:troxler/headful",
   "scripts": {
     "dev": "(cd demo; poi)",
+    "test": "ava",
     "build": "babel src/ --presets babel-preset-env --out-dir dist/",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {},
   "devDependencies": {
+    "ava": "0.24.0",
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.6.1",
+    "jsdom": "11.5.1",
     "poi": "9.6.10"
+  },
+  "ava": {
+    "files": [
+      "test/*.js"
+    ],
+    "source": [
+      "dist/**/*"
+    ],
+    "failFast": true,
+    "failWithoutAssertions": true
   }
 }
