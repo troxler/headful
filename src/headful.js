@@ -26,7 +26,7 @@ const propertySetters = {
         setMetaContent('name="twitter:image"', val);
     },
     lang(val, props) {
-        setAttributes('html', {lang: val});
+        setRootElementAttributes('html', {lang: val});
         noProp(props, this.ogLocale) && setOgLocaleIfValid(val);
     },
     ogLocale(val) {
@@ -58,16 +58,29 @@ function noProp(props, propNameOrFunction) {
 }
 
 function setMetaContent(attr, val) {
-    setAttributes(`meta[${attr}]`, {content: val});
+    setHeadElementAttributes(`meta[${attr}]`, {content: val});
 }
 
-function setAttributes(selector, attributes) {
-    const element = document.querySelector(selector);
+function setRootElementAttributes(selector, attributes) {
+    setElementAttributes(getElement(document, selector), attributes);
+}
+
+function setHeadElementAttributes(selector, attributes) {
+    setElementAttributes(getElement(document.head, selector), attributes);
+}
+
+function setElementAttributes(element, attributes) {
     if (element) {
         Object.keys(attributes).forEach(attrName => element.setAttribute(attrName, attributes[attrName]));
-    } else if (conf.debug) {
+    }
+}
+
+function getElement(parent, selector) {
+    const element = parent.querySelector(selector);
+    if (!element && conf.debug) {
         console.error(`Headful: Element '${selector}' was not found.`);
     }
+    return element;
 }
 
 function setOgLocaleIfValid(locale) {
