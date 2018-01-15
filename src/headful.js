@@ -12,7 +12,7 @@ const propertySetters = {
         Object.keys(obj).forEach(selector => setHeadElementAttributes(selector, obj[selector]));
     },
     title(val) {
-        document.title = val;
+        document.title = val === undefined ? '' : val;
         setMetaContent('itemprop="name"', val);
         setMetaContent('property="og:title"', val);
         setMetaContent('name="twitter:title"', val);
@@ -82,7 +82,13 @@ function setHeadElementAttributes(selector, attributes) {
 
 function setElementAttributes(element, attributes) {
     if (element) {
-        Object.keys(attributes).forEach(attrName => element.setAttribute(attrName, attributes[attrName]));
+        Object.keys(attributes).forEach(attrName => {
+            if (attributes[attrName] === undefined) {
+                element.removeAttribute(attrName);
+            } else {
+                element.setAttribute(attrName, attributes[attrName]);
+            }
+        });
     }
 }
 

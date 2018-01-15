@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lang: 'en-US',
         url: 'http://localhost:4000/',
         html: {
-            body: {id: 'aPageId'},
+            body: {id: 'aPageId', 'data-remove-me': undefined},
             h1: {'data-foo': 'bar'},
         },
         head: {

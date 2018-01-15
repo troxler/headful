@@ -18,7 +18,11 @@ function getDocument() {
 }
 
 function getElementAttr(selector, attr) {
-    return getDocument().querySelector(selector).attributes[attr].value;
+    try {
+        return getDocument().querySelector(selector).attributes[attr].value;
+    } catch (e) {
+        return undefined; // no attribute with that name
+    }
 }
 
 function getMetaContent(selector) {
@@ -50,6 +54,11 @@ test('title', t => {
     t.is(getMetaContent('itemprop="name"'), 'headful');
     t.is(getMetaContent('property="og:title"'), 'headful');
     t.is(getMetaContent('name="twitter:title"'), 'headful');
+    headful({title: undefined});
+    t.is(getDocument().title, '');
+    t.is(getMetaContent('itemprop="name"'), undefined);
+    t.is(getMetaContent('property="og:title"'), undefined);
+    t.is(getMetaContent('name="twitter:title"'), undefined);
 });
 
 test('description', t => {
