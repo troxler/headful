@@ -26,6 +26,24 @@ function getMetaContent(selector) {
 }
 
 
+test('html', t => {
+    headful({
+        html: {
+            body: {id: 'headful'},
+        },
+    });
+    t.is(getElementAttr('body', 'id'), 'headful');
+});
+
+test('head', t => {
+    headful({
+        head: {
+            'meta[charset]': {charset: 'utf-8'},
+        },
+    });
+    t.is(getElementAttr('meta[charset]', 'charset'), 'utf-8');
+});
+
 test('title', t => {
     headful({title: 'headful'});
     t.is(getDocument().title, 'headful');

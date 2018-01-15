@@ -95,6 +95,19 @@ headful({
     // <link rel="canonical">
     // <meta property="og:url">
     // <meta name="twitter:url">
+    
+    html: {
+        selector1: {attr1: 'val1', attr2: 'val2'},
+        selector2: {attr1: 'val1', attr2: 'val2'},
+    },
+    // add/change arbitrary attributes on elements in the overall document using CSS selectors
+
+    head: {
+        selector1: {attr1: 'val1', attr2: 'val2'},
+        selector2: {attr1: 'val1', attr2: 'val2'},
+    },
+    // add/change arbitrary attributes on elements within the <head> using CSS selectors
+
 });
 ```
 
