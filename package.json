@@ -1,6 +1,6 @@
 {
   "name": "headful",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Set <head> properties (e.g. title and meta tags) from JavaScript.",
   "keywords": [
     "head",
