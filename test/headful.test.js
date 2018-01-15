@@ -68,3 +68,11 @@ test('lang', t => {
     t.is(getElementAttr('html[lang]', 'lang'), 'en-AU');
     t.is(getMetaContent('property="og:locale"'), 'en-GB');
 });
+
+test('url', t => {
+    const url = 'http://example.com/';
+    headful({url: url});
+    t.is(getElementAttr('link[rel="canonical"]', 'href'), url);
+    t.is(getMetaContent('property="og:url"'), url);
+    t.is(getMetaContent('name="twitter:url"'), url);
+});

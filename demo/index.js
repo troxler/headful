@@ -7,5 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
         keywords: ['example', 'head', 'javascript'],
         image: 'http://example.com/preview.png',
         lang: 'en-US',
+        url: 'http://localhost:4000/',
     }, {debug: true});
 });

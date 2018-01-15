@@ -90,6 +90,11 @@ headful({
 
     ogLocale: '',
     // * <meta property="og:locale">
+    
+    url: '',
+    // <link rel="canonical">
+    // <meta property="og:url">
+    // <meta name="twitter:url">
 });
 ```
 

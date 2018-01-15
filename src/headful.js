@@ -32,6 +32,11 @@ const propertySetters = {
     ogLocale(val) {
         setMetaContent('property="og:locale"', val);
     },
+    url(val) {
+        setHeadElementAttributes('link[rel="canonical"]', {href: val});
+        setMetaContent('property="og:url"', val);
+        setMetaContent('name="twitter:url"', val);
+    },
 };
 
 function headful(props, userConf) {
