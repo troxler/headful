@@ -149,6 +149,27 @@ headful({ title: undefined });
 ```
 
 
+## Compatibility
+
+Headful works with every current and most reasonably old web browsers including:
+
+* Firefox 34+
+* Chrome 45+
+* Edge
+* Safari 9+
+
+If you need to support even more browsers (including Internet Explorer), you have to add a polyfill for
+[`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+(e.g. with [core-js](https://github.com/zloirock/core-js)).
+When you do that, the following browsers are supported:
+
+* Firefox 4+
+* Chrome 5+
+* Edge
+* Safari 5+
+* Internet Explorer 9+
+
+
 ## Extensions
 
 * [vue-headful](https://github.com/troxler/vue-headful) - Headful wrapper for Vue.js
