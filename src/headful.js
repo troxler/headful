@@ -6,10 +6,10 @@ const conf = {
 
 const propertySetters = {
     html(obj) {
-        Object.keys(obj).forEach(selector => setRootElementAttributes(selector, obj[selector]));
+        obj && Object.keys(obj).forEach(selector => setRootElementAttributes(selector, obj[selector]));
     },
     head(obj) {
-        Object.keys(obj).forEach(selector => setHeadElementAttributes(selector, obj[selector]));
+        obj && Object.keys(obj).forEach(selector => setHeadElementAttributes(selector, obj[selector]));
     },
     title(val) {
         document.title = val === undefined ? '' : val;
