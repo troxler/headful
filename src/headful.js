@@ -12,7 +12,7 @@ const propertySetters = {
         obj && Object.keys(obj).forEach(selector => setHeadElementAttributes(selector, obj[selector]));
     },
     title(val) {
-        document.title = val === undefined ? '' : val;
+        document.title = isRemoveValue(val) ? '' : val;
         setMetaContent('itemprop="name"', val);
         setMetaContent('property="og:title"', val);
         setMetaContent('name="twitter:title"', val);
@@ -83,7 +83,7 @@ function setHeadElementAttributes(selector, attributes) {
 function setElementAttributes(element, attributes) {
     if (element) {
         Object.keys(attributes).forEach(attrName => {
-            if (attributes[attrName] === undefined) {
+            if (isRemoveValue(attributes[attrName])) {
                 element.removeAttribute(attrName);
             } else {
                 element.setAttribute(attrName, attributes[attrName]);
@@ -101,9 +101,15 @@ function getElement(parent, selector) {
 }
 
 function setOgLocaleIfValid(locale) {
-    if (locale.match(/^[a-z]{2}-[a-z]{2}$/i)) {
+    if (isRemoveValue(locale)) {
+        propertySetters.ogLocale(locale);
+    } else if (locale.match(/^[a-z]{2}-[a-z]{2}$/i)) {
         const [language, region] = locale.split('-');
         const ogLocale = `${language}_${region.toUpperCase()}`;
         propertySetters.ogLocale(ogLocale);
     }
+}
+
+function isRemoveValue(val) {
+    return val === undefined || val === null;
 }

@@ -132,7 +132,7 @@ headful({
 });
 ```
 
-If you want to **remove a previously defined attribute from an element**, you can set it to `undefined` as in the example below:
+If you want to **remove a previously defined attribute from an element**, you can set it to `null` or `undefined` as in the example below:
 
 ```js
 headful({ title: 'Headful' });
@@ -141,7 +141,7 @@ headful({ title: 'Headful' });
 // <meta property="og:title" content="Headful">
 // <meta name="twitter:title" content="Headful">
 
-headful({ title: undefined });
+headful({ title: null });
 // <title></title>
 // <meta itemprop="name">
 // <meta property="og:title">

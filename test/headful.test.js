@@ -33,19 +33,35 @@ function getMetaContent(selector) {
 test('html', t => {
     headful({
         html: {
-            body: {id: 'headful'},
+            body: {id: 'headful', class: 'headful'},
         },
     });
     t.is(getElementAttr('body', 'id'), 'headful');
+    t.is(getElementAttr('body', 'class'), 'headful');
+    headful({
+        html: {
+            body: {id: null, class: undefined},
+        },
+    });
+    t.is(getElementAttr('body', 'id'), undefined);
+    t.is(getElementAttr('body', 'class'), undefined);
 });
 
 test('head', t => {
     headful({
         head: {
-            'meta[charset]': {charset: 'utf-8'},
+            'meta[charset]': {charset: 'utf-8', 'data-test': 'headful'},
         },
     });
     t.is(getElementAttr('meta[charset]', 'charset'), 'utf-8');
+    t.is(getElementAttr('meta[charset]', 'data-test'), 'headful');
+    headful({
+        head: {
+            'meta[charset]': {charset: null, 'data-test': undefined},
+        },
+    });
+    t.is(getElementAttr('meta[charset]', 'charset'), undefined);
+    t.is(getElementAttr('meta[charset]', 'data-test'), undefined);
 });
 
 test('title', t => {
@@ -55,6 +71,13 @@ test('title', t => {
     t.is(getMetaContent('property="og:title"'), 'headful');
     t.is(getMetaContent('name="twitter:title"'), 'headful');
     headful({title: undefined});
+    t.is(getDocument().title, '');
+    t.is(getMetaContent('itemprop="name"'), undefined);
+    t.is(getMetaContent('property="og:title"'), undefined);
+    t.is(getMetaContent('name="twitter:title"'), undefined);
+    headful({title: 'headful'});
+    t.is(getDocument().title, 'headful');
+    headful({title: null});
     t.is(getDocument().title, '');
     t.is(getMetaContent('itemprop="name"'), undefined);
     t.is(getMetaContent('property="og:title"'), undefined);
@@ -94,6 +117,9 @@ test('lang', t => {
     headful({lang: 'en-AU', ogLocale: 'en-GB'});
     t.is(getElementAttr('html[lang]', 'lang'), 'en-AU');
     t.is(getMetaContent('property="og:locale"'), 'en-GB');
+    headful({lang: null});
+    t.is(getElementAttr('html[lang]', 'lang'), undefined);
+    t.is(getMetaContent('property="og:locale"'), undefined);
 });
 
 test('url', t => {
